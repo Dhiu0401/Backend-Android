@@ -1,9 +1,9 @@
 <?php
-$servername = getenv('MYSQLHOST');
-$username = getenv('MYSQLUSER');
-$password = getenv('MYSQLPASSWORD');
-$dbname = getenv('MYSQLDATABASE');
-$port = getenv('MYSQLPORT');
+$servername = getenv('mysql.railway.internal');      
+$username = getenv('root');        
+$password = getenv('MYSQjRAXNLLTnyuajDFADdSfgsWBvdPSDgHfLPASSWORD');    // MYSQLPASSWORD được cung cấp bởi Railway
+$dbname = getenv('railway');      
+$port = getenv('3306');
 
 // Kết nối MySQL
 $conn = new mysqli($servername, $username, $password, $dbname, $port);

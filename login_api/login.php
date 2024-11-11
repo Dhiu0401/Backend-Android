@@ -1,19 +1,20 @@
 <?php
+// Đặt header JSON
 header('Content-Type: application/json');
 
-// Sử dụng các biến môi trường từ Railway để kết nối đến MySQL
-$servername = getenv('MYSQLHOST');       // Hoặc 'mysql.railway.internal' nếu bạn muốn ghi trực tiếp
-$username = getenv('MYSQLUSER');         // root
-$password = getenv('MYSQLPASSWORD');     // jRAXNLLTnyuajDFADdSfgsWBvdPSdghF
-$dbname = getenv('MYSQLDATABASE');       // railway
-$port = getenv('MYSQLPORT');             // 3306
+// Lấy thông tin kết nối từ biến môi trường
+$servername = getenv('mysql.railway.internal');      // MYSQLHOST được cung cấp bởi Railway
+$username = getenv('root');        // MYSQLUSER được cung cấp bởi Railway
+$password = getenv('MYSQjRAXNLLTnyuajDFADdSfgsWBvdPSDgHfLPASSWORD');    // MYSQLPASSWORD được cung cấp bởi Railway
+$dbname = getenv('railway');      // MYSQLDATABASE được cung cấp bởi Railway
+$port = getenv('3306');            // MYSQLPORT được cung cấp bởi Railway
 
-// Kết nối đến cơ sở dữ liệu MySQL
+// Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Kiểm tra kết nối
 if ($conn->connect_error) {
-    echo json_encode(["status" => "fail", "message" => "Database connection failed: " . $conn->connect_error]);
+    echo json_encode(["status" => "fail", "message" => "Database connection failed"]);
     exit();
 }
 
