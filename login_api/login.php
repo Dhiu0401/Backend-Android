@@ -1,10 +1,11 @@
 <?php
 header('Content-Type: application/json'); // Đặt Content-Type là JSON
 
-$servername = getenv('MYSQL_HOST');
-$username = getenv('MYSQL_USER');
-$password = getenv('MYSQL_PASSWORD');
-$dbname = getenv('MYSQL_DATABASE');
+$servername = "mysql-db"; // Tên service trong docker-compose.yml nếu dùng Docker
+$username = "root";
+$password = "yourpassword";
+$dbname = "logindemo"; // Tên database phải khớp với tên bạn đã dùng trong file .sql
+
 
 
 // Kết nối đến cơ sở dữ liệu
