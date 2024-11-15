@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  php-apache:
+    build:
+      context: ./login_api
+      dockerfile: Dockerfile
+    container_name: php-apache
+    ports:
+      - "8080:80" # Truy cập ứng dụng PHP từ http://localhost:8080
+    depends_on:
+      - mysql-db
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=yourpassword
+      - MYSQL_DATABASE=logindemo
+
+  mysql-db:
+    image: mysql:5.7
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: yourpassword
+      MYSQL_DATABASE: logindemo
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql_data:
